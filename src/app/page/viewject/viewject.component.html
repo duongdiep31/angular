@@ -1,0 +1,21 @@
+<nz-layout>
+    <nz-header class="zz-header" >
+        <p>Tổng thể dự án</p>
+    </nz-header>
+    <nz-content class="zz-content" >
+        <div nz-row>
+            <div nz-col nzSpan="12">
+            <p>Chi Phí Dự Án:</p>
+            <p>Đã chi:</p>
+            <p>Còn lại</p>
+            </div>
+            <div nz-col nzSpan="12">
+            <p>{{item.cost|currency: 'VND'}}</p>
+            <p>{{item.spent|currency: 'VND'}}</p>
+            <p>{{item.cost - item.spent| currency: 'VND'}}</p>
+            </div>
+         </div>
+    </nz-content>
+    <nz-header  class="zz-header">Thành Viên</nz-header>
+    <nz-content  class="zz-content"></nz-content>
+  </nz-layout>

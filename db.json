@@ -1,0 +1,40 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  },
+  "projects": [
+    {
+      "name": "Dương Điệp",
+      "cost": "12312312",
+      "spent": "500000",
+      "id": 1
+    }
+  ],
+  "members": [],
+  "users": [
+    {
+      "email": "diepdvph11572@fpt.edu.vn",
+      "password": "$2a$10$O/5wDKjXKvASUzpM5MVPF.ROdW.Zoq8A/oq8xGUhOvW1fM7Q6vBtu",
+      "checkPassword": "rT4VFQhRBy6G2St",
+      "nickname": "diep",
+      "phoneNumber": "0358282316",
+      "agree": true,
+      "id": 1,
+      "role": "admin"
+    }
+  ]
+}

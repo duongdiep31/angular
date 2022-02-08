@@ -1,0 +1,11 @@
+#action {
+    margin-left: 30px;
+    border: none;
+    background-color: white;
+}
+#action>i{
+    font-size: 20px;
+}
+[nz-button]{
+    border: none;
+}
