@@ -12,7 +12,9 @@ export class TableComponent implements OnInit {
   @Input() rows: Dictionary[] =[]
   @Output() id = new EventEmitter<number>()
   @Output() data = new EventEmitter<Object>()
+  @Output() view = new EventEmitter<boolean>()
   @Input() string =''
+  @Input() lengthArea = 0
   @ContentChildren(ColumsDirective) colum!: QueryList<ColumsDirective>;
   zz = '';
   subscription: Subscription | undefined;
@@ -21,16 +23,18 @@ export class TableComponent implements OnInit {
   ngOnInit(): void {  
   }
   handleRemove(data: any){
-    this.id.emit(data.id)
+    this.id.emit(data)
   }
   handleChange(item: any){
      this.data.emit(item)
   }
   handleView(data:any){
     if (this.string === 'user') {
-      this.router.navigate([`/viewUser/${data.id}`])
+      this.router.navigate([`/viewUser/${data._id}`])
     }else if(this.string === 'project'){
-      this.router.navigate([`/view/${data.id}`])
+      this.router.navigate([`/view/${data._id}`])
+    }else if (this.string === 'viewProject') {
+      this.view.emit(data)
     }
   }
 }

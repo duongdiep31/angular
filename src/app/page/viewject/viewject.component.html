@@ -1,21 +1,90 @@
+<button nz-button nzType="primary" (click)="showModal()">
+    <span>Thêm Khu Vực</span>
+</button>
 <nz-layout>
-    <nz-header class="zz-header" >
+
+    <nz-modal [(nzVisible)]="isVisible" [nzContent]="modalContent" [nzFooter]="null" (nzOnCancel)="handleCancel()"
+        nzWidth="800px">
+        <ng-template #modalContent>
+            <!-- form add Area -->
+            <form *ngIf="!viewAction && !addPeopleAction" nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+                <nz-form-item>
+                    <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="name">Tên khu vực</nz-form-label>
+                    <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="The input is not valid Name!">
+                        <input nz-input *ngIf="type" [(ngModel)]="item.name" formControlName="name" id="name" />
+                        <input nz-input *ngIf="!type" formControlName="name" id="name" />
+                    </nz-form-control>
+                </nz-form-item>
+                <nz-form-item nz-row class="register-area">
+                    <nz-form-control [nzSpan]="14" [nzOffset]="6">
+                        <button nz-button nzType="primary">Xác nhận</button>
+                    </nz-form-control>
+                </nz-form-item>
+            </form>
+            <!-- button -->
+            <button *ngIf="addPeopleAction" style="display: none;" nz-button nzType="primary"
+                (click)="handleAddProple()">
+                <span>Thêm Thành Viên</span>
+            </button>
+            <button *ngIf="!addPeopleAction" style="display: block;" nz-button nzType="primary"
+                (click)="handleAddProple()">
+                <span>Thêm Thành Viên</span>
+            </button>
+            <!-- list people -->
+            <app-table *ngIf="viewAction" (id)="removePeople($event)" (view)="handleView($event)" [string]="title"
+                [rows]="dataPeople">
+                <ngvn-colum header="Tên đăng nhập" key="email"></ngvn-colum>
+                <ngvn-colum header="Tên" key="name"></ngvn-colum>
+                <ngvn-colum header="Số điện thoại" key="phone"></ngvn-colum>
+                <ngvn-colum header='Chức Năng' key="action">
+                </ngvn-colum>
+
+            </app-table>
+            <!-- form add people -->
+            <form (ngSubmit)="submitPeople()" [formGroup]="formPeopleAdd" *ngIf="addPeopleAction" nz-form>
+                <nz-form-item>
+                    <nz-form-label [nzSpan]="6" nzFor="idUser">Người dùng</nz-form-label>
+                    <nz-form-control [nzSpan]="14">
+                        <nz-select formControlName='idUser' nzPlaceHolder="Tag Mode">
+                            <nz-option *ngFor="let item of users" [nzLabel]="item.email | json" [nzValue]="item._id">
+                            </nz-option>
+                        </nz-select>
+                    </nz-form-control>
+                </nz-form-item>
+                <nz-form-item nz-row class="register-area">
+                    <nz-form-control [nzSpan]="14" [nzOffset]="6">
+                        <button nz-button nzType="primary">Xác nhận</button>
+                    </nz-form-control>
+                </nz-form-item>
+            </form>
+        </ng-template>
+    </nz-modal>
+    <nz-header class="zz-header">
+
         <p>Tổng thể dự án</p>
     </nz-header>
-    <nz-content class="zz-content" >
+    <nz-content class="zz-content">
         <div nz-row>
             <div nz-col nzSpan="12">
-            <p>Chi Phí Dự Án:</p>
-            <p>Đã chi:</p>
-            <p>Còn lại</p>
+                <p>Chi Phí Dự Án:</p>
+                <p>Đã chi:</p>
+                <p>Còn lại</p>
             </div>
             <div nz-col nzSpan="12">
-            <p>{{item.cost|currency: 'VND'}}</p>
-            <p>{{item.spent|currency: 'VND'}}</p>
-            <p>{{item.cost - item.spent| currency: 'VND'}}</p>
+                <p>{{item.cost|currency: 'VND'}}</p>
+                <p>{{item.spent|currency: 'VND'}}</p>
+                <p>{{item.cost - item.spent| currency: 'VND'}}</p>
             </div>
-         </div>
+        </div>
     </nz-content>
-    <nz-header  class="zz-header">Thành Viên</nz-header>
-    <nz-content  class="zz-content"></nz-content>
-  </nz-layout>
+    <nz-header class="zz-header">Thành Viên</nz-header>
+    <nz-content class="zz-content">
+        <app-table (id)="remove($event)" (data)="handleChangeModal($event)" (view)="handleView($event)" [string]="title"
+            [rows]="listArea">
+            <ngvn-colum header="ID" key="_id"></ngvn-colum>
+            <ngvn-colum header="Tên" key="name"></ngvn-colum>
+            <ngvn-colum header="SL Thành viên" key="peopleLength"></ngvn-colum>
+            <ngvn-colum header='Chức Năng' key="action"></ngvn-colum>
+        </app-table>
+    </nz-content>
+</nz-layout>

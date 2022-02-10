@@ -1,22 +1,33 @@
 export interface IProduct {
-    id: number,
+    _id: number,
     name: string,
-    cost: number
-  }
-  export interface ICategory {
-    _id: number
-    name: string;
-    image: string;
+    cost: number,
+    spent: number
   }
 export interface Auth {
     name: string
     email: String;
     password: any
   }
+  export interface Area{
+    _id: any,
+    name: string,
+    idProject :any
+  }
+  export interface People{
+    _id: any,
+    idArea: any,
+    idProject :any
+  }
   export interface Dictionary {
     [key: string]: any
   }
-  
+  export interface User {
+    _id: any,
+    name: String,
+    email: String,
+    phone: Number
+  }
 export enum COL_DATA_TYPES{
   TEXT,
   NUMBER,

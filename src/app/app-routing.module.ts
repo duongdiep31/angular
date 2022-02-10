@@ -12,7 +12,7 @@ const routes: Routes = [
   {path: '', component: ScreensComponent, children: [
     {path: '', component: HomeComponent},
     {path:'member', component: MemberComponent},
-    {path :'view/:id', component: ViewjectComponent}
+    {path :'view/:_id', component: ViewjectComponent}
   ]},
   {path: '', component: AuthComponent,
   children: [

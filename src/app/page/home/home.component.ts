@@ -25,7 +25,7 @@ export class HomeComponent implements OnInit {
 
   getAll() {
     this.projectService.getAll().subscribe((res: any) => {
-      this.datas = res
+      this.datas = res.list
     })
   }
   showModal(): void {
@@ -48,13 +48,14 @@ export class HomeComponent implements OnInit {
   }
   handleCancel(): void {
     this.isVisible = false;
+
   }
   //form
   submitForm(): void {
     if (this.validateForm.valid) {
       try {
         if (this.type) {
-          this.projectService.update(this.validateForm.value, this.item.id).subscribe((res:any)=>{
+          this.projectService.update(this.validateForm.value, this.item._id).subscribe((res:any)=>{
             this.message.success("Thành công")
             this.handleCancel()
             this.validateForm.reset()
@@ -88,7 +89,7 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.getAll();
     if (this.type) {
-      this.validateForm.setValue({
+      this.validateForm = this.fb.group({
         name: [this.item.name, [Validators.required]],
         cost:[this.item.cost, [Validators.required]]
       })
@@ -98,7 +99,10 @@ export class HomeComponent implements OnInit {
         cost: [null, [Validators.required]]
       })
     }
-
+    // this.validateForm = this.fb.group({
+    //   name: [this.type ? this.item.name :null, [Validators.required]],
+    //   cost: [this.type ? this.item.cost :null, [Validators.required]]
+    // })
   }
 
 }
