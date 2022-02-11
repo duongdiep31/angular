@@ -35,6 +35,20 @@
             </ul>
           </nz-dropdown-menu>
         </ng-container>
+        <ng-container *ngIf="item.key === 'actions'">
+          <button id="action" nz-dropdown [nzDropdownMenu]="menu"><svg viewBox="64 64 896 896" focusable="false"
+              class="" data-icon="more" width="1em" height="1em" fill="currentColor" aria-hidden="true">
+              <path
+                d="M456 231a56 56 0 1 0 112 0 56 56 0 1 0-112 0zm0 280a56 56 0 1 0 112 0 56 56 0 1 0-112 0zm0 280a56 56 0 1 0 112 0 56 56 0 1 0-112 0z">
+              </path>
+            </svg></button>
+          <nz-dropdown-menu #menu="nzDropdownMenu">
+            <ul nz-menu>
+              <button nz-button (click)="handleChange(data)" nz-menu-item>Sửa</button>
+              <button nz-button (click)="handleRemove(data)" nz-menu-item>Xoá</button>
+            </ul>
+          </nz-dropdown-menu>
+        </ng-container>
       </td>
     </tr>
   </tbody>

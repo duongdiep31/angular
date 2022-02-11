@@ -1,1 +1,54 @@
-<p>register works!</p>
+<body style="background: #ECECEC;padding:30px;">
+    <nz-card style="width:600px;margin: auto;margin-top: 100px;height: 400px;" [nzBordered]="false">
+        <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+            <nz-form-item>
+                <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="email">E-mail</nz-form-label>
+                <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="The input is not valid E-mail!">
+                    <input nz-input formControlName="email" id="email" />
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+                <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="password" nzRequired>Mật khẩu</nz-form-label>
+                <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Please input your password!">
+                    <input nz-input type="password" id="password" formControlName="password"
+                        (ngModelChange)="updateConfirmValidator()" />
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+                <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="checkPassword" nzRequired>Nhập lại Mật khẩu</nz-form-label>
+                <nz-form-control [nzSm]="14" [nzXs]="24" [nzErrorTip]="errorTpl">
+                    <input nz-input type="password" formControlName="checkPassword" id="checkPassword" />
+                    <ng-template #errorTpl let-control>
+                        <ng-container *ngIf="control.hasError('required')">Vui lòng nhập mật khẩu</ng-container>
+                        <ng-container *ngIf="control.hasError('confirm')">
+                            Mật khẩu không khớp
+                        </ng-container>
+                    </ng-template>
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+                <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="name" nzRequired
+                    nzTooltipTitle="What do you want other to call you">
+                    <span>Họ và Tên</span>
+                </nz-form-label>
+                <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Please input your nickname!">
+                    <input nz-input id="name" formControlName="name" />
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+                <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="phone" nzRequired>Số điện thoại</nz-form-label>
+                <nz-form-control [nzSm]="14" [nzXs]="24" [nzValidateStatus]="validateForm.controls['phoneNumber']"
+                    nzErrorTip="Please input your phone number!">
+                    <nz-input-group >
+                        <input formControlName="phone" id="phone" nz-input />
+                    </nz-input-group>
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item nz-row class="register-area">
+                <nz-form-control [nzSpan]="14" [nzOffset]="6">
+                    <button  nz-button nzType="primary">Đăng kí</button>
+                </nz-form-control>
+            </nz-form-item>
+        </form>
+    </nz-card>
+</body>

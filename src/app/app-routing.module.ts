@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './auth/auth.guard';
 import { AuthComponent } from './layout/auth/auth.component';
 import { ScreensComponent } from './layout/screens/screens.component';
 import { LoginComponent } from './page/auth/login/login.component';
@@ -10,7 +11,7 @@ import { ViewjectComponent } from './page/viewject/viewject.component';
 
 const routes: Routes = [
   {path: '', component: ScreensComponent, children: [
-    {path: '', component: HomeComponent},
+    {path: '', component: HomeComponent, canActivate: [AuthGuard]},
     {path:'member', component: MemberComponent},
     {path :'view/:_id', component: ViewjectComponent}
   ]},

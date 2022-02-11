@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-screens',
@@ -7,7 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ScreensComponent implements OnInit {
   isCollapsed = false;
-  constructor() { }
+  constructor(private router:Router) { }
+    logout(){
+        localStorage.removeItem('currentUser')      
+        this.router.navigate(['/login'])
+    }
+
   ngOnInit(): void {
   }
 }

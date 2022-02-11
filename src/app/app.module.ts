@@ -92,8 +92,6 @@ import { ColumsDirective } from './component/directive/colums.directive';
 import { HeaderDirective } from './component/directive/header.directive';
 import { ViewjectComponent } from './page/viewject/viewject.component';
 
-
-
 registerLocaleData(en);
 
 @NgModule({
@@ -109,7 +107,7 @@ registerLocaleData(en);
     CellDirective,
     ColumsDirective,
     HeaderDirective,
-    ViewjectComponent
+    ViewjectComponent,
   ],
   imports: [
     BrowserModule,

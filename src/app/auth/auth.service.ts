@@ -9,18 +9,22 @@ import { httpOptions } from './instance';
 export class AuthService {
 
   constructor(private httpClient:HttpClient) { }
+   isAuthenticated(){
+    let token = localStorage.getItem('currentUser');
+    if(token != undefined && token.length > 0){
+      return true;
+    }
+    return false;
+  }
   register(data: Object):Observable<Register[]>{
-        let url = "http://localhost:3001/register"
+        let url = "http://localhost:8000/api/register"
         
     return this.httpClient.post<Register[]>(url,data, httpOptions).pipe()
   }
   login(data: Object): Observable<Signin[]>{
-    let url = "http://localhost:3001/signin"
+    let url = "http://localhost:8000/api/signin"
     return this.httpClient.post<Signin[]>(url,data ,httpOptions).pipe()
   }
-  getAll(): Observable<Signin[]>{
-    let url = "http://localhost:3001/users"
-    return this.httpClient.get<Signin[]>(url ,httpOptions).pipe()
-  }
+
 
 }

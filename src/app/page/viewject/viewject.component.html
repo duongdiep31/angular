@@ -1,6 +1,16 @@
-<button nz-button nzType="primary" (click)="showModal()">
-    <span>Thêm Khu Vực</span>
-</button>
+<div nz-row>
+    <div nz-col nzSpan="12">
+        <button nz-button nzType="primary" (click)="handleArea()">
+            <span>Thêm Khu Vực</span>
+        </button>
+    </div>
+    <div nz-col nzSpan="12">
+        <button class="left" nz-button nzType="primary" (click)="handleArea()">
+            <span>Thêm Task</span>
+        </button>
+    </div>
+</div>
+
 <nz-layout>
 
     <nz-modal [(nzVisible)]="isVisible" [nzContent]="modalContent" [nzFooter]="null" (nzOnCancel)="handleCancel()"
@@ -60,7 +70,6 @@
         </ng-template>
     </nz-modal>
     <nz-header class="zz-header">
-
         <p>Tổng thể dự án</p>
     </nz-header>
     <nz-content class="zz-content">
@@ -77,13 +86,12 @@
             </div>
         </div>
     </nz-content>
-    <nz-header class="zz-header">Thành Viên</nz-header>
+    <nz-header class="zz-header">Khu vực</nz-header>
     <nz-content class="zz-content">
         <app-table (id)="remove($event)" (data)="handleChangeModal($event)" (view)="handleView($event)" [string]="title"
             [rows]="listArea">
             <ngvn-colum header="ID" key="_id"></ngvn-colum>
             <ngvn-colum header="Tên" key="name"></ngvn-colum>
-            <ngvn-colum header="SL Thành viên" key="peopleLength"></ngvn-colum>
             <ngvn-colum header='Chức Năng' key="action"></ngvn-colum>
         </app-table>
     </nz-content>

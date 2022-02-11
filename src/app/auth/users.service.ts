@@ -13,4 +13,13 @@ export class UsersService {
   getAll():Observable<User[]>{
     return this.httpClient.get<User[]>(api('user'), httpOptions).pipe()
   }
+  find(id:any):Observable<User[]>{
+    return this.httpClient.get<User[]>(api(`user/${id}`), httpOptions).pipe()
+  }
+  change(id:any, data: any):Observable<User[]>{
+    return this.httpClient.patch<User[]>(api(`user/${id}`), data, httpOptions).pipe()
+  }
+  remove(id:any):Observable<User[]>{
+    return this.httpClient.delete<User[]>(api(`user/${id}`), httpOptions).pipe()
+  }
 }

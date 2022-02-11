@@ -17,6 +17,7 @@ export class ViewjectComponent implements OnInit {
   viewAction = false
   dataView!:Area
   formAction = false
+  taskAction = false
   users: User[] = []
   idView = ''
   addPeopleAction = false
@@ -100,9 +101,14 @@ export class ViewjectComponent implements OnInit {
     }, 1000);
   }
   handleCancel(): void {
-    this.isVisible = false;
     this.addPeopleAction = false
     this.viewAction = false
+    this.isVisible = false;
+  
+  }
+  handleArea(){
+    this.addPeopleAction = true
+    this.showModal()
   }
   ///form
   validateForm!: FormGroup;

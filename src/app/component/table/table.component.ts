@@ -30,7 +30,7 @@ export class TableComponent implements OnInit {
   }
   handleView(data:any){
     if (this.string === 'user') {
-      this.router.navigate([`/viewUser/${data._id}`])
+      this.view.emit(data)
     }else if(this.string === 'project'){
       this.router.navigate([`/view/${data._id}`])
     }else if (this.string === 'viewProject') {

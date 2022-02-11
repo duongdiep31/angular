@@ -26,7 +26,8 @@ export interface Auth {
     _id: any,
     name: String,
     email: String,
-    phone: Number
+    phone: Number,
+    role :String
   }
 export enum COL_DATA_TYPES{
   TEXT,
