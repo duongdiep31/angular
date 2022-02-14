@@ -49,7 +49,7 @@ export class ViewjectComponent implements OnInit {
     })
   }
   getAll() {
-    this.area.getAll().subscribe((res: any) => {
+    this.area.getAll().subscribe((res: any) => {  
       this.listArea = res.list
     })
   }
@@ -80,13 +80,13 @@ export class ViewjectComponent implements OnInit {
   }
   dataPeoples(){
     this.peopleService.find(this.idView).subscribe((res:any)=>{
-      console.log(res);
-      
       this.length = res.total
       this.dataPeople = res.list
       this.showModal()
     })
   }
+ 
+
   /// modal
   isVisible = false;
   isConfirmLoading = false;
