@@ -36,7 +36,7 @@ export class HomeComponent implements OnInit {
     this.showModal()
     this.type = true
   }
-  remove(id: any) {
+  remove(id: number) {
     try {
       this.projectService.remove(id).subscribe((res: any) => {
         this.message.success("Thành công")
